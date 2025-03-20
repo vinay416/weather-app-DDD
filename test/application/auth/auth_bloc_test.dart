@@ -35,7 +35,7 @@ void main() {
         auth.signInAnonymous(),
       ).thenAnswer((_) async => Left(ServerFailure()));
       // expect later
-      final expected = [VerifyingAuth(), AuthenticationFailed("Server failure")];
+      final expected = [VerifyingAuth(), AuthenticationFailed(SERVER_FAILURE)];
       expectLater(bloc.stream, emitsInOrder(expected));
       // act
       bloc.add(SignInAnonymously());
@@ -43,13 +43,13 @@ void main() {
       verify(auth.signInAnonymous());
     });
 
-      test("signInAnonymously UnknownFailure", () async {
+    test("signInAnonymously UnknownFailure", () async {
       //assert
       when(
         auth.signInAnonymous(),
       ).thenAnswer((_) async => Left(UnknownFailure()));
       // expect later
-      final expected = [VerifyingAuth(), AuthenticationFailed("Something went wrong")];
+      final expected = [VerifyingAuth(), AuthenticationFailed(UNKNOWN_FAILURE)];
       expectLater(bloc.stream, emitsInOrder(expected));
       // act
       bloc.add(SignInAnonymously());

@@ -7,6 +7,11 @@ import '../../../domain/auth/i_auth_facade.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
+// ignore: constant_identifier_names
+const SERVER_FAILURE = "Server failure";
+// ignore: constant_identifier_names
+const UNKNOWN_FAILURE = "Something went wrong";
+
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade auth;
   AuthBloc({required this.auth}) : super(UnAuthenticated()) {
@@ -25,8 +30,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   String _failureMsg(Failure failure) {
     final msg = switch (failure) {
-      ServerFailure() => "Server failure",
-      UnknownFailure() => "Something went wrong",
+      ServerFailure() => SERVER_FAILURE,
+      UnknownFailure() => UNKNOWN_FAILURE,
     };
     return msg;
   }
