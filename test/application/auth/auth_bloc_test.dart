@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app_ddd/application/auth/bloc/auth_bloc.dart';
 import 'package:weather_app_ddd/core/failure.dart';
-import 'package:weather_app_ddd/domain/auth/auth_success.dart';
+import 'package:weather_app_ddd/domain/auth/auth_user.dart';
 
 import 'auth_facade_mock.mocks.dart';
 
@@ -16,10 +16,15 @@ void main() {
     });
 
     test("signInAnonymously Success", () async {
+      final mockUser = AuthUser(
+        isGuest: true,
+        name: "Test",
+        email: "",
+        id: "id1",
+        dpUrl: "",
+      );
       //assert
-      when(
-        auth.signInAnonymous(),
-      ).thenAnswer((_) async => Right(AuthSuccess()));
+      when(auth.signInAnonymous()).thenAnswer((_) async => Right(mockUser));
       // expect later
       final expected = [VerifyingAuth(), Authenticated()];
       expectLater(bloc.stream, emitsInOrder(expected));

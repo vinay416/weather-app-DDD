@@ -8,7 +8,7 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:weather_app_ddd/core/failure.dart' as _i5;
-import 'package:weather_app_ddd/domain/auth/auth_success.dart' as _i6;
+import 'package:weather_app_ddd/domain/auth/auth_user.dart' as _i6;
 
 import 'auth_facade_mock.dart' as _i3;
 
@@ -40,16 +40,16 @@ class MockMyAuthFacade extends _i1.Mock implements _i3.MyAuthFacade {
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthSuccess>> signInAnonymous() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthUser>> signInAnonymous() =>
       (super.noSuchMethod(
             Invocation.method(#signInAnonymous, []),
             returnValue:
-                _i4.Future<_i2.Either<_i5.Failure, _i6.AuthSuccess>>.value(
-                  _FakeEither_0<_i5.Failure, _i6.AuthSuccess>(
+                _i4.Future<_i2.Either<_i5.Failure, _i6.AuthUser>>.value(
+                  _FakeEither_0<_i5.Failure, _i6.AuthUser>(
                     this,
                     Invocation.method(#signInAnonymous, []),
                   ),
                 ),
           )
-          as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthSuccess>>);
+          as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthUser>>);
 }
