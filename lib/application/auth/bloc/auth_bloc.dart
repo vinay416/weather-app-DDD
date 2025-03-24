@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
 import '../../../core/failure.dart';
+import '../../../domain/auth/auth_user.dart';
 import '../../../domain/auth/i_auth_facade.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -24,7 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final response = await auth.signInAnonymous();
     final state = response.fold(
       (failure) => AuthenticationFailed(_failureMsg(failure)),
-      (success) => Authenticated(),
+      (authUser) => Authenticated(authUser),
     );
     emit(state);
   }

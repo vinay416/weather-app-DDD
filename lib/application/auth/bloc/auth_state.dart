@@ -25,8 +25,10 @@ final class AuthenticationFailed extends AuthState {
 
 // Authenticated [Login/Signup Success]
 final class Authenticated extends AuthState {
+  Authenticated(this.authUser);
+  final AuthUser authUser;
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [authUser];
 }
 
 // LoggingOut [Logout Success]

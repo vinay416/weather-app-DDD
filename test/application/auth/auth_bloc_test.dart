@@ -26,7 +26,7 @@ void main() {
       //assert
       when(auth.signInAnonymous()).thenAnswer((_) async => Right(mockUser));
       // expect later
-      final expected = [VerifyingAuth(), Authenticated()];
+      final expected = [VerifyingAuth(), Authenticated(mockUser)];
       expectLater(bloc.stream, emitsInOrder(expected));
       // act
       bloc.add(SignInAnonymously());
