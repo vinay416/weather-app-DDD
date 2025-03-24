@@ -16,6 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade auth;
   AuthBloc({required this.auth}) : super(UnAuthenticated()) {
     on<SignInAnonymously>(_signInAnonymously);
+    on<Logout>(_logOut);
   }
 
   FutureOr<void> _signInAnonymously(event, emit) async {
@@ -24,6 +25,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final state = response.fold(
       (failure) => AuthenticationFailed(_failureMsg(failure)),
       (success) => Authenticated(),
+    );
+    emit(state);
+  }
+
+  FutureOr<void> _logOut(event, emit) async {
+    emit(LoggingOut());
+    final response = await auth.logOut();
+    final state = response.fold(
+      (failure) => LogutFailed(_failureMsg(failure)),
+      (r) => UnAuthenticated(),
     );
     emit(state);
   }

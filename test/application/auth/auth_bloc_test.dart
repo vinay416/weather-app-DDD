@@ -61,5 +61,29 @@ void main() {
       await untilCalled(auth.signInAnonymous());
       verify(auth.signInAnonymous());
     });
+
+    test("Logout Success", () async {
+      //assert
+      when(auth.logOut()).thenAnswer((_) async => Right(unit));
+      // expect later
+      final expected = [LoggingOut(), UnAuthenticated()];
+      expectLater(bloc.stream, emitsInOrder(expected));
+      // act
+      bloc.add(Logout());
+      await untilCalled(auth.logOut());
+      verify(auth.logOut());
+    });
+
+    test("Logout Failed", () async {
+      //assert
+      when(auth.logOut()).thenAnswer((_) async => Left(ServerFailure()));
+      // expect later
+      final expected = [LoggingOut(), LogutFailed(SERVER_FAILURE)];
+      expectLater(bloc.stream, emitsInOrder(expected));
+      // act
+      bloc.add(Logout());
+      await untilCalled(auth.logOut());
+      verify(auth.logOut());
+    });
   });
 }

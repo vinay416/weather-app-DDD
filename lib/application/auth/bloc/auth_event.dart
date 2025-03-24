@@ -4,3 +4,5 @@ part of 'auth_bloc.dart';
 sealed class AuthEvent {}
 
 final class SignInAnonymously extends AuthEvent {}
+
+final class Logout extends AuthEvent {}
