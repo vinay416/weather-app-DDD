@@ -52,4 +52,17 @@ class MockMyAuthFacade extends _i1.Mock implements _i3.MyAuthFacade {
                 ),
           )
           as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthUser>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> logOut() =>
+      (super.noSuchMethod(
+            Invocation.method(#logOut, []),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.Failure, _i2.Unit>(
+                this,
+                Invocation.method(#logOut, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);
 }

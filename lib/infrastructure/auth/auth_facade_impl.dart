@@ -20,4 +20,14 @@ class AuthFacadeImpl implements IAuthFacade {
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> logOut() async {
+    try {
+      await firebaseAuth.signOut();
+      return Right(unit);
+    } catch (e) {
+      return Left(ServerFailure());
+    }
+  }
 }

@@ -49,5 +49,27 @@ void main() {
       expect(response, Left(expected));
       verify(mockFirebaseAuth.signInAnonymously());
     });
+
+    test("Logout Success", () async {
+      //assert
+      when(mockFirebaseAuth.signOut());
+      //act
+      final response = await auth.logOut();
+      //verify
+      final expected = unit;
+      expect(response, Right(expected));
+      verify(mockFirebaseAuth.signOut());
+    });
+
+    test("Logout Failed", () async {
+      //assert
+      when(mockFirebaseAuth.signOut()).thenThrow(ServerFailure());
+      //act
+      final response = await auth.logOut();
+      //verify
+      final expected = ServerFailure();
+      expect(response, Left(expected));
+      verify(mockFirebaseAuth.signOut());
+    });
   });
 }
