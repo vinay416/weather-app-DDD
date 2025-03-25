@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:weather_app_ddd/core/exceptions.dart';
 import 'package:weather_app_ddd/core/lat_lon.dart';
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart';
 import 'package:weather_app_ddd/infrastructure/weather/weather_repository_impl.dart';
@@ -42,6 +43,28 @@ void main() {
       verify(mockDio.get(any, queryParameters: latlongParam));
       final expected = AQI.fromJson(AQI_FIXTURE);
       expect(response, expected);
+    });
+
+    test("Fetch AQI -> Failure", () async {
+      //assert
+      const LatLong latlong = (lat: 50, lon: 50);
+      final latlongParam = {
+        "lat": latlong.lat,
+        "lon": latlong.lon,
+        "appid": APP_ID,
+      };
+      when(mockDio.get(any, queryParameters: latlongParam)).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(contentType: "application/json"),
+          data: (AQI_FIXTURE),
+          statusCode: 500,
+        ),
+      );
+      //act
+      final response =  repo.getAIQ(latlong);
+      //verify
+      verify(mockDio.get(any, queryParameters: latlongParam));
+      expect(response, throwsA(ServerException()));
     });
   });
 }
