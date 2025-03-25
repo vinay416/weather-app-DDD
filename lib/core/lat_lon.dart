@@ -1,0 +1,1 @@
+typedef LatLong = ({double lat, double lon});
