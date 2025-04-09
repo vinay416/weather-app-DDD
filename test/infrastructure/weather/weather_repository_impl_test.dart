@@ -24,7 +24,7 @@ void main() {
 
     test("Fetch AQI -> Success", () async {
       //assert
-      const LatLong latlong = (lat: 50, lon: 50);
+      const LatLong latlong = LatLong(lat: 50, lon: 50);
       final latlongParam = {
         "lat": latlong.lat,
         "lon": latlong.lon,
@@ -47,7 +47,7 @@ void main() {
 
     test("Fetch AQI -> Failure", () async {
       //assert
-      const LatLong latlong = (lat: 50, lon: 50);
+      const LatLong latlong = LatLong(lat: 50, lon: 50);
       final latlongParam = {
         "lat": latlong.lat,
         "lon": latlong.lon,
@@ -61,7 +61,7 @@ void main() {
         ),
       );
       //act
-      final response =  repo.getAIQ(latlong);
+      final response = repo.getAIQ(latlong);
       //verify
       verify(mockDio.get(any, queryParameters: latlongParam));
       expect(response, throwsA(ServerException()));

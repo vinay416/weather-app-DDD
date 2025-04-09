@@ -16,7 +16,7 @@ void main() {
 
   group("Weather Facade Impl", () {
     test("GET AQI -> Success", () async {
-      const LatLong latlong = (lat: 50, lon: 50);
+      const LatLong latlong = LatLong(lat: 50, lon: 50);
       final AQI aqi = AQI.fromJson(AQI_FIXTURE);
       //assert
       when(mockRepo.getAIQ(latlong)).thenAnswer((_) async => aqi);
@@ -28,7 +28,7 @@ void main() {
     });
 
     test("GET AQI -> Failed", () async {
-      const LatLong latlong = (lat: 50, lon: 50);
+      const LatLong latlong = LatLong(lat: 50, lon: 50);
       //assert
       when(mockRepo.getAIQ(latlong)).thenThrow(ServerException());
       //act

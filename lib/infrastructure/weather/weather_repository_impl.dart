@@ -11,7 +11,7 @@ const String WEATHER_BASE_URL = "http://api.openweathermap.org";
 const String GET_AQI_URL = "/data/2.5/air_pollution";
 
 //TODO : get from env
-const String APP_ID = "";
+const String APP_ID = "92a4449a7a8b88c4e25e58bbc93b2f13";
 
 class WeatherRepositoryImpl implements IWeatherRepository {
   WeatherRepositoryImpl(this.dio);
