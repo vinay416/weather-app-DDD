@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:weather_app_ddd/application/auth/bloc/auth_bloc.dart';
+import 'package:weather_app_ddd/application/auth/auth_bloc.dart';
 import 'package:weather_app_ddd/core/failure.dart';
 import 'package:weather_app_ddd/domain/auth/auth_user.dart';
 
