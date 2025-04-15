@@ -14,3 +14,11 @@ sealed class Failure extends Equatable {
 class ServerFailure extends Failure {}
 
 class UnknownFailure extends Failure {}
+
+class LocationFailure extends Failure {
+  const LocationFailure(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [properties, msg];
+}

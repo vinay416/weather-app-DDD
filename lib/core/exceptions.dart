@@ -13,3 +13,11 @@ sealed class Exceptions extends Equatable {
 class ServerException extends Exceptions {}
 
 class CacheException extends Exceptions {}
+
+class LocationException extends Exceptions {
+  const LocationException(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [msg];
+}
