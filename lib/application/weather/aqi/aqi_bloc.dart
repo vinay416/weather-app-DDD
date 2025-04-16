@@ -33,12 +33,8 @@ class AQIBloc extends Bloc<AQIEvent, AQIState> {
       (latlon) async {
         final aqiResponse = await weather.getAIQ(latlon);
         final state = aqiResponse.fold(
-          (failure) {
-            return AQIFailed("Something went wrong");
-          },
-          (aqi) {
-            return AQIData(aqi);
-          },
+          (failure) => AQIFailed("Something went wrong"),
+          (aqi) => AQIData(aqi),
         );
         emit(state);
       },
