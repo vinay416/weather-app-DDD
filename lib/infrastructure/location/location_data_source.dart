@@ -16,26 +16,24 @@ class LocationDataSourceImpl implements LocationDataSource {
     if (permission == PermissionStatus.denied) {
       permission = await locator.requestPermission();
       if (permission == PermissionStatus.denied) {
-        throw LocationException("Permission denied");
+        throw LocationPermissionException("Permission denied");
       }
     }
     if (permission == PermissionStatus.deniedForever) {
-      throw LocationException("Permission permanently denied");
+      throw LocationPermissionException("Permission permanently denied");
     }
     bool serviceEnabled = await locator.serviceEnabled();
     if (!serviceEnabled) {
       final success = await locator.requestService();
-      if (!success) throw LocationException("Service not enabled");
+      if (!success) throw LocationServiceException("Service not enabled");
     }
 
     final location = await locator.getLocation();
     final lat = location.latitude;
     final lon = location.longitude;
     if (lat == null || lon == null) {
-      throw LocationException("Unable to get Position");
+      throw LocationServiceException("Unable to get Position");
     }
     return LatLong(lat: lat, lon: lon);
   }
-
-
 }

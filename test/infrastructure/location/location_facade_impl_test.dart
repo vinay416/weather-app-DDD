@@ -26,12 +26,14 @@ void main() {
 
     test("Location failed", () async {
       //assert
-      when(mockSource.getCurrentLatLong()).thenThrow(LocationException("any"));
+      when(
+        mockSource.getCurrentLatLong(),
+      ).thenThrow(LocationPermissionException("any"));
       //act
       final response = await locationFacade.getCurrentLatLong();
       //verify or expect
       verify(mockSource.getCurrentLatLong());
-      expect(response, Left(LocationFailure("any")));
+      expect(response, Left(LocationPermissionFailure("any")));
     });
   });
 }

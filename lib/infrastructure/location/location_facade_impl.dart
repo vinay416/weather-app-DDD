@@ -14,10 +14,12 @@ class LocationFacadeImpl implements ILocationFacade {
     try {
       final latlon = await locator.getCurrentLatLong();
       return Right(latlon);
-    } on LocationException catch (e) {
-      return Left(LocationFailure(e.msg));
+    } on LocationPermissionException catch (e) {
+      return Left(LocationPermissionFailure(e.msg));
+    } on LocationServiceException catch (e) {
+      return Left(LocationServiceFailure(e.msg));
     } catch (e) {
-      return Left(LocationFailure("Something went wrong"));
+      return Left(LocationServiceFailure("Something went wrong"));
     }
   }
 }

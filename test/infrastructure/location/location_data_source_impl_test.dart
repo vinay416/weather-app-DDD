@@ -60,7 +60,10 @@ void main() {
       //act
       final call = location.getCurrentLatLong();
       //verify or expect
-      expect(() async => await call, throwsA(TypeMatcher<LocationException>()));
+      expect(
+        () async => await call,
+        throwsA(TypeMatcher<LocationPermissionException>()),
+      );
       await untilCalled(mockLocator.hasPermission());
       await untilCalled(mockLocator.requestPermission());
       verify(mockLocator.hasPermission());
@@ -82,7 +85,7 @@ void main() {
         //verify or expect
         expect(
           () async => await call,
-          throwsA(TypeMatcher<LocationException>()),
+          throwsA(TypeMatcher<LocationPermissionException>()),
         );
         await untilCalled(mockLocator.hasPermission());
         await untilCalled(mockLocator.requestPermission());
@@ -100,7 +103,10 @@ void main() {
       final call = location.getCurrentLatLong();
       //verify or expect
       verify(mockLocator.hasPermission());
-      expect(() async => await call, throwsA(TypeMatcher<LocationException>()));
+      expect(
+        () async => await call,
+        throwsA(TypeMatcher<LocationPermissionException>()),
+      );
     });
 
     test("Location service granted", () async {
@@ -141,7 +147,10 @@ void main() {
       //act
       final call = location.getCurrentLatLong();
       //verify or expect
-      expect(() async => await call, throwsA(TypeMatcher<LocationException>()));
+      expect(
+        () async => await call,
+        throwsA(TypeMatcher<LocationPermissionException>()),
+      );
       await untilCalled(mockLocator.hasPermission());
       await untilCalled(mockLocator.serviceEnabled());
       await untilCalled(mockLocator.requestService());
@@ -182,7 +191,10 @@ void main() {
       //act
       final call = location.getCurrentLatLong();
       //verify or expect
-      expect(() async => await call, throwsA(TypeMatcher<LocationException>()));
+      expect(
+        () async => await call,
+        throwsA(TypeMatcher<LocationPermissionException>()),
+      );
       await untilCalled(mockLocator.hasPermission());
       await untilCalled(mockLocator.serviceEnabled());
       verify(mockLocator.getLocation());

@@ -11,6 +11,22 @@ final class AQIInitial extends AQIState {}
 
 final class AQILoading extends AQIState {}
 
+final class LocationPermissionError extends AQIState {
+  const LocationPermissionError(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [msg];
+}
+
+final class LocationServiceError extends AQIState {
+  const LocationServiceError(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [msg];
+}
+
 final class AQIData extends AQIState {
   const AQIData(this.aqiEntity);
   final AqiEntity aqiEntity;
@@ -19,4 +35,10 @@ final class AQIData extends AQIState {
   List<Object> get props => [aqiEntity];
 }
 
-final class AQIFailed extends AQIState {}
+final class AQIFailed extends AQIState {
+  const AQIFailed(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [msg];
+}

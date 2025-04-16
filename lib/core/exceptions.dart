@@ -14,8 +14,16 @@ class ServerException extends Exceptions {}
 
 class CacheException extends Exceptions {}
 
-class LocationException extends Exceptions {
-  const LocationException(this.msg);
+class LocationPermissionException extends Exceptions {
+  const LocationPermissionException(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [msg];
+}
+
+class LocationServiceException extends Exceptions {
+  const LocationServiceException(this.msg);
   final String msg;
 
   @override

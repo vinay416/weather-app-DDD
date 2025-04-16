@@ -44,7 +44,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final msg = switch (failure) {
       ServerFailure() => SERVER_FAILURE,
       UnknownFailure() => UNKNOWN_FAILURE,
-      LocationFailure() => failure.msg,
+      LocationPermissionFailure() => failure.msg,
+      LocationServiceFailure() => failure.msg,
     };
     return msg;
   }

@@ -15,8 +15,16 @@ class ServerFailure extends Failure {}
 
 class UnknownFailure extends Failure {}
 
-class LocationFailure extends Failure {
-  const LocationFailure(this.msg);
+class LocationPermissionFailure extends Failure {
+  const LocationPermissionFailure(this.msg);
+  final String msg;
+
+  @override
+  List<Object> get props => [properties, msg];
+}
+
+class LocationServiceFailure extends Failure {
+  const LocationServiceFailure(this.msg);
   final String msg;
 
   @override
