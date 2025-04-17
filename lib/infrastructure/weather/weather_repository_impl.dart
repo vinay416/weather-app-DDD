@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:weather_app_ddd/core/app_scerets.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
 import 'package:weather_app_ddd/core/lat_lon.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_repository.dart';
@@ -11,8 +12,7 @@ const String WEATHER_BASE_URL = "http://api.openweathermap.org";
 //* /data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API key}
 const String GET_AQI_URL = "/data/2.5/air_pollution";
 
-//TODO : get from env
-const String APP_ID = "92a4449a7a8b88c4e25e58bbc93b2f13";
+const String APP_ID = AppScerets.OPEN_WEATHER_API_KEY;
 
 @LazySingleton(as: IWeatherRepository)
 class WeatherRepositoryImpl implements IWeatherRepository {
@@ -23,7 +23,7 @@ class WeatherRepositoryImpl implements IWeatherRepository {
   Future<AQI> getAIQ(LatLong latlong) async {
     try {
       final response = await dio.get(
-        GET_AQI_URL,
+        WEATHER_BASE_URL + GET_AQI_URL,
         queryParameters: {
           "lat": latlong.lat,
           "lon": latlong.lon,
