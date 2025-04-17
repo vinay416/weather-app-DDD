@@ -5,10 +5,12 @@ import 'package:weather_app_ddd/core/failure.dart';
 import 'package:weather_app_ddd/domain/location/i_location_facade.dart';
 import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_facade.dart';
+import 'package:injectable/injectable.dart';
 
 part 'aqi_event.dart';
 part 'aqi_state.dart';
 
+@injectable
 class AQIBloc extends Bloc<AQIEvent, AQIState> {
   final ILocationFacade locator;
   final IWeatherFacade weather;

@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:location/location.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
 import 'package:weather_app_ddd/core/lat_lon.dart';
@@ -6,6 +7,7 @@ abstract class LocationDataSource {
   Future<LatLong> getCurrentLatLong();
 }
 
+@LazySingleton(as: LocationDataSource) 
 class LocationDataSourceImpl implements LocationDataSource {
   const LocationDataSourceImpl({required this.locator});
   final Location locator;

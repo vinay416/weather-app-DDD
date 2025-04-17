@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
 import 'package:weather_app_ddd/core/lat_lon.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_repository.dart';
@@ -13,6 +14,7 @@ const String GET_AQI_URL = "/data/2.5/air_pollution";
 //TODO : get from env
 const String APP_ID = "92a4449a7a8b88c4e25e58bbc93b2f13";
 
+@LazySingleton(as: IWeatherRepository)
 class WeatherRepositoryImpl implements IWeatherRepository {
   WeatherRepositoryImpl(this.dio);
   final Dio dio;
