@@ -10,7 +10,7 @@ import 'package:location/location.dart' as _i2;
 import 'package:location_platform_interface/location_platform_interface.dart'
     as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:weather_app_ddd/core/lat_lon.dart' as _i3;
+import 'package:weather_app_ddd/core/weather/lat_lon.dart' as _i3;
 
 import 'mock_location.dart' as _i4;
 

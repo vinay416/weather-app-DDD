@@ -6,7 +6,7 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:weather_app_ddd/core/lat_lon.dart' as _i5;
+import 'package:weather_app_ddd/core/weather/lat_lon.dart' as _i5;
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart' as _i2;
 
 import 'mock_weather_repo.dart' as _i3;

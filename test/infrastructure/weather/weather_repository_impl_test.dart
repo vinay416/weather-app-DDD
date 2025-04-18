@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
-import 'package:weather_app_ddd/core/lat_lon.dart';
+import 'package:weather_app_ddd/core/weather/lat_lon.dart';
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart';
 import 'package:weather_app_ddd/infrastructure/weather/weather_repository_impl.dart';
 

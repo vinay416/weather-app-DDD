@@ -8,7 +8,7 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:weather_app_ddd/core/failure.dart' as _i5;
-import 'package:weather_app_ddd/core/lat_lon.dart' as _i6;
+import 'package:weather_app_ddd/core/weather/lat_lon.dart' as _i6;
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart' as _i7;
 
 import 'mock_locator_weather.dart' as _i3;

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
 import 'package:weather_app_ddd/core/failure.dart';
-import 'package:weather_app_ddd/core/lat_lon.dart';
+import 'package:weather_app_ddd/core/weather/lat_lon.dart';
 import 'package:weather_app_ddd/infrastructure/location/location_facade_impl.dart';
 
 import 'mock_location.mocks.dart';
