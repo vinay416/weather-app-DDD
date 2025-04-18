@@ -1,5 +1,3 @@
-// Possible index: 1, 2, 3, 4, 5. Where 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor.
-import 'package:equatable/equatable.dart';
 import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 
 class AQI extends AqiEntity {
@@ -15,25 +13,17 @@ class AQI extends AqiEntity {
   }
 }
 
-class AQIComponent extends Equatable {
+class AQIComponent extends AQIComponentEntity {
   const AQIComponent({
-    required this.co,
-    required this.no,
-    required this.no2,
-    required this.o3,
-    required this.so2,
-    required this.pm2_5,
-    required this.pm10,
-    required this.nh3,
+    required super.co,
+    required super.no,
+    required super.no2,
+    required super.o3,
+    required super.so2,
+    required super.pm2_5,
+    required super.pm10,
+    required super.nh3,
   });
-  final double co;
-  final double no;
-  final double no2;
-  final double o3;
-  final double so2;
-  final double pm2_5;
-  final double pm10;
-  final double nh3;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,7 +50,4 @@ class AQIComponent extends Equatable {
       nh3: map['nh3'] ?? 0,
     );
   }
-
-  @override
-  List<Object?> get props => [co, no, no2, o3, so2, pm2_5, pm10, nh3];
 }

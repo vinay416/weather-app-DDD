@@ -5,10 +5,10 @@ import 'package:weather_app_ddd/application/weather/aqi/aqi_bloc.dart';
 import 'package:weather_app_ddd/injectable_di.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(const MainApp());
 }
 

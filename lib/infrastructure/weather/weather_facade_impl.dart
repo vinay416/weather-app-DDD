@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_app_ddd/core/failure.dart';
-import 'package:weather_app_ddd/core/lat_lon.dart';
+import 'package:weather_app_ddd/core/weather/lat_lon.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_facade.dart';
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart';
 

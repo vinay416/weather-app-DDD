@@ -8,3 +8,11 @@ sealed class AQIEvent extends Equatable {
 }
 
 final class FetchAQI extends AQIEvent {}
+
+final class ShowPollutantInfo extends AQIEvent {
+  const ShowPollutantInfo(this.component);
+  final String component;
+
+  @override
+  List<Object> get props => [component];
+}

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app_ddd/application/weather/aqi/aqi_bloc.dart';
 import 'package:weather_app_ddd/core/failure.dart';
-import 'package:weather_app_ddd/core/lat_lon.dart';
+import 'package:weather_app_ddd/core/weather/lat_lon.dart';
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart';
 
 import '../../fixtures/aqi_fixture.dart';
