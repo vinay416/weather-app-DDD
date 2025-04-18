@@ -45,12 +45,12 @@ class _AqiLoadedState extends State<AqiLoaded>
       children: [
         Transform.scale(
           scale: 1.5,
-          child: LottieBuilder.asset(AssetsConst.kCloudPink),
+          child: LottieBuilder.asset(AssetsConst.kCloudPinkLottie),
         ),
         Transform.scale(
           scale: 1.5,
           child: LottieBuilder.asset(
-            AssetsConst.kCloudGrey,
+            AssetsConst.kCloudGreyLottie,
             height: 300,
             controller: controller,
             onLoaded: (p0) {

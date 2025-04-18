@@ -110,7 +110,7 @@ class AqiPollutantsBuilder extends StatelessWidget {
         child: Transform.scale(
           scale: 6.5,
           child: LottieBuilder.asset(
-            AssetsConst.kCloudGrey,
+            AssetsConst.kCloudGreyLottie,
             animate: false,
             height: 80,
             width: double.infinity,

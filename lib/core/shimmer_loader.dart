@@ -8,25 +8,30 @@ class ShimmerLoader extends StatelessWidget {
     required this.boxShape,
     required this.size,
     this.borderRadius,
+    this.child,
   });
   final BoxShape boxShape;
   final Size size;
   final BorderRadiusGeometry? borderRadius;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: kPrimaryColor,
-      highlightColor: kShimmerColor,
-      child: Container(
-        height: size.height,
-        width: size.width,
-        decoration: BoxDecoration(
-          shape: boxShape,
-          borderRadius: borderRadius,
-          color: kPrimaryColor,
-        ),
-      ),
+      period: Duration(seconds: 2),
+      baseColor: kBaseShimmerColor,
+      highlightColor: const Color.fromARGB(93, 189, 189, 189),
+      child:
+          child ??
+          Container(
+            height: size.height,
+            width: size.width,
+            decoration: BoxDecoration(
+              shape: boxShape,
+              borderRadius: borderRadius,
+              color: kBaseShimmerColor,
+            ),
+          ),
     );
   }
 }
