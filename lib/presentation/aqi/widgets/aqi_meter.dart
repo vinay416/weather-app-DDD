@@ -10,7 +10,7 @@ class AqiMeter extends StatelessWidget {
     return Container(
       height: 200,
       width: 290,
-      decoration: BoxDecoration(shape: BoxShape.circle),
+      decoration: BoxDecoration(shape: BoxShape.rectangle),
       child: CustomPaint(painter: AqiMeterPainter(), child: _buildStatus()),
     );
   }
