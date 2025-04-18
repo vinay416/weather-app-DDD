@@ -13,16 +13,32 @@ class AqiPollutantsBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
-            child: Column(
-              children: [
-                Text("Pollutants", style: TextStyle(fontSize: 30)),
-                _buildList(),
-              ],
+      child: ShaderMask(
+        shaderCallback: (Rect rect) {
+          return LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black,
+              Colors.transparent,
+              Colors.transparent,
+              Colors.black,
+            ],
+            stops: [0.0, 0.1, 0.9, 1.0],
+          ).createShader(rect);
+        },
+        blendMode: BlendMode.dstOut,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+              child: Column(
+                children: [
+                  Text("Pollutants", style: TextStyle(fontSize: 30)),
+                  _buildList(),
+                ],
+              ),
             ),
           ),
         ),
