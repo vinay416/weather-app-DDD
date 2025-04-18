@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_ddd/application/weather/aqi/aqi_bloc.dart';
+import 'package:weather_app_ddd/presentation/aqi/pages/aqi_loaded.dart';
 import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_meter.dart';
 
 class AqiPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _AqiPageState extends State<AqiPage> {
           if (state is LocationServiceError) {}
           if (state is AQIData) {}
           //AQIFailed
-          return Center(child: AqiMeter());
+          return AqiLoaded();
         },
       ),
     );

@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class AqiCalculator {
   final List<double> pm25Breakpoints = [
     0.0,
@@ -49,6 +51,24 @@ class AqiCalculator {
         return "Very Poor";
       default:
         return "Error";
+    }
+  }
+
+  Color aqiStatusColor(int index) {
+    // Possible index: 1, 2, 3, 4, 5. Where 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor.
+    switch (index) {
+      case 1:
+        return Color(0xFF53A593);
+      case 2:
+        return Color(0xFFABDC9E);
+      case 3:
+        return Color(0xFFf2d272);
+      case 4:
+        return Color(0xFF447AB8);
+      case 5:
+        return Color(0xFF8c74b3);
+      default:
+        return Color(0xFF9F86C0);
     }
   }
 }
