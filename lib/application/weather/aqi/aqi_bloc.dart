@@ -9,7 +9,7 @@ import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_facade.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../core/weather/pollutants_info_links.dart';
+import '../../../presentation/core/weather/pollutants_info_links.dart';
 
 part 'aqi_event.dart';
 part 'aqi_state.dart';
