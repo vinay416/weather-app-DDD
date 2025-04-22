@@ -37,8 +37,17 @@ class AqiCalculator {
     return ((iHigh - iLow) / (cHigh - cLow) * (c - cLow) + iLow).round();
   }
 
+  int aqiIndexMapping(int aqi) {
+    if (aqi <= 50) return 1;
+    if (aqi <= 100) return 2;
+    if (aqi <= 200) return 3;
+    if (aqi <= 300) return 4;
+    if (aqi <= 400) return 5;
+    return 6;
+  }
+
   String aqiStatus(int aqi) {
-    switch (aqi) {
+    switch (aqiIndexMapping(aqi)) {
       case 1:
         return "Good";
       case 2:
@@ -49,14 +58,15 @@ class AqiCalculator {
         return "Poor";
       case 5:
         return "Very Poor";
+      case 6:
+        return "Severe";
       default:
         return "Error";
     }
   }
 
-  Color aqiStatusColor(int index) {
-    // Possible index: 1, 2, 3, 4, 5. Where 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor.
-    switch (index) {
+  Color aqiStatusColor(int aqi) {
+    switch (aqiIndexMapping(aqi)) {
       case 1:
         return Color(0xFF53A593);
       case 2:
@@ -67,6 +77,8 @@ class AqiCalculator {
         return Color(0xFF447AB8);
       case 5:
         return Color(0xFF8c74b3);
+      case 6:
+        return Color(0xFFe8514e);
       default:
         return Color(0xFF9F86C0);
     }

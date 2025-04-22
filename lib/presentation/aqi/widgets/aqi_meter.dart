@@ -21,7 +21,7 @@ class AqiMeter extends StatelessWidget {
 
   Widget _buildStatus() {
     final aqiCal = AqiCalculator();
-    final aqiIndex = aqiEntity.index;
+    final aqiVal = aqiCal.calculateAqi(aqiEntity.pm2_5);
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 5,
@@ -29,16 +29,16 @@ class AqiMeter extends StatelessWidget {
         Transform.translate(
           offset: Offset(0, 150),
           child: Text(
-            aqiEntity.aqiValue,
+            aqiVal.toString(),
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.w400),
           ),
         ),
         Text(
-          aqiEntity.status,
+          aqiCal.aqiStatus(aqiVal),
           style: TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.bold,
-            color: aqiCal.aqiStatusColor(aqiIndex),
+            color: aqiCal.aqiStatusColor(aqiVal),
           ),
         ),
         RichText(

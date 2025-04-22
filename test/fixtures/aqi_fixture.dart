@@ -1,3 +1,4 @@
+// ignore: constant_identifier_names
 const AQI_FIXTURE = {
   "coord": [50, 50],
   "list": [

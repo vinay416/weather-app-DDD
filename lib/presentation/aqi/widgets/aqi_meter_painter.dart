@@ -41,6 +41,7 @@ class AqiMeterPainter extends CustomPainter {
           ..strokeWidth = 30.0
           ..style = PaintingStyle.stroke
           ..shader = LinearGradient(
+            // ignore: deprecated_member_use
             colors: sectorColors.map((e) => e.withOpacity(0.2)).toList(),
           ).createShader(arcsRect);
 
