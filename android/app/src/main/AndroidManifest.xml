@@ -12,7 +12,7 @@
     </queries>
     
     <application
-        android:label="weather_app_ddd"
+        android:label="Airfy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
