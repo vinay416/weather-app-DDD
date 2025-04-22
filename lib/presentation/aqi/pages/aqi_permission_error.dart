@@ -25,6 +25,7 @@ class AqiPermissionError extends StatelessWidget {
                 Text(
                   msg,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 80),
                 RetryButton(),
