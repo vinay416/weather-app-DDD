@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../core/weather/aqi_calculator.dart';
+import '../../presentation/core/weather/aqi_calculator.dart';
 
 // Possible index: 1, 2, 3, 4, 5. Where 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor.
 class AqiEntity extends Equatable {

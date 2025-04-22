@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:location/location.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
-import 'package:weather_app_ddd/core/weather/lat_lon.dart';
+import 'package:weather_app_ddd/infrastructure/core/lat_lon.dart';
 
 abstract class LocationDataSource {
   Future<LatLong> getCurrentLatLong();

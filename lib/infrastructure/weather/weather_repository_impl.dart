@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_app_ddd/core/app_scerets.dart';
 import 'package:weather_app_ddd/core/exceptions.dart';
-import 'package:weather_app_ddd/core/weather/lat_lon.dart';
+import 'package:weather_app_ddd/infrastructure/core/lat_lon.dart';
 import 'package:weather_app_ddd/domain/weather/i_weather_repository.dart';
 import 'package:weather_app_ddd/infrastructure/weather/aqi.dart';
 

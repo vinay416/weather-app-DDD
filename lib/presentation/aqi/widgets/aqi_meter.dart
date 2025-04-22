@@ -3,7 +3,7 @@ import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_meter_painter.dart';
 import 'package:weather_app_ddd/theme/app_theme.dart';
 
-import '../../../core/weather/aqi_calculator.dart';
+import '../../core/weather/aqi_calculator.dart';
 
 class AqiMeter extends StatelessWidget {
   const AqiMeter({super.key, required this.aqiEntity});

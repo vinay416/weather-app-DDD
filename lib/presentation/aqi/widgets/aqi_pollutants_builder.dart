@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app_ddd/core/assets_const.dart';
-import 'package:weather_app_ddd/core/weather/aqi_calculator.dart';
+import 'package:weather_app_ddd/presentation/core/weather/aqi_calculator.dart';
 import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/theme/app_theme.dart';
 
