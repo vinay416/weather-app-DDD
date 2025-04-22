@@ -5,7 +5,6 @@ import 'package:weather_app_ddd/presentation/aqi/pages/aqi_failed_state.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_loaded.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_permission_error.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_shimmer.dart';
-import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_meter.dart';
 
 class AqiPage extends StatefulWidget {
   const AqiPage({super.key});

@@ -4,4 +4,5 @@ class AssetsConst {
   static const String kScannerLottie = "assets/lottie/scanner.json";
   static const String kLocationSvg = "assets/svg/location.svg";
   static const String kPermissionErrorSvg = "assets/svg/permission_error.svg";
+  static const String kServerErrorSvg = "assets/svg/server_error.svg";
 }

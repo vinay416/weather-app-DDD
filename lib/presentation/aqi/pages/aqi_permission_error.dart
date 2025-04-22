@@ -1,9 +1,8 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather_app_ddd/application/weather/aqi/aqi_bloc.dart';
 import 'package:weather_app_ddd/core/assets_const.dart';
+import 'package:weather_app_ddd/presentation/aqi/widgets/retry_button.dart';
 import 'package:weather_app_ddd/theme/app_theme.dart';
 
 class AqiPermissionError extends StatelessWidget {
@@ -28,7 +27,7 @@ class AqiPermissionError extends StatelessWidget {
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 80),
-                _buildRequestButton(context),
+                RetryButton(),
                 SizedBox(height: 10),
                 _buildOpenSettings(),
               ],
@@ -48,24 +47,6 @@ class AqiPermissionError extends StatelessWidget {
         foregroundColor: WidgetStatePropertyAll(kPrimaryTextColor),
       ),
       child: Text("Open Settings", style: TextStyle(fontSize: 14)),
-    );
-  }
-
-  Widget _buildRequestButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 48,
-      child: ElevatedButton(
-        onPressed: () => context.read<AQIBloc>().add(FetchAQI()),
-        style: ButtonStyle(
-          shape: WidgetStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-          ),
-          backgroundColor: WidgetStatePropertyAll(kRedColor),
-          foregroundColor: WidgetStatePropertyAll(kPrimaryTextColor),
-        ),
-        child: Text("Retry", style: TextStyle(fontSize: 18)),
-      ),
     );
   }
 }
