@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app_ddd/core/assets_const.dart';
+import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_meter.dart';
 import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_pollutants_builder.dart';
 
 class AqiLoaded extends StatefulWidget {
-  const AqiLoaded({super.key});
+  const AqiLoaded({super.key, required this.aqiEntity});
+  final AqiEntity aqiEntity;
 
   @override
   State<AqiLoaded> createState() => _AqiLoadedState();
@@ -17,7 +19,10 @@ class _AqiLoadedState extends State<AqiLoaded>
 
   @override
   void initState() {
-    controller = AnimationController(vsync: this);
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
     loadClouds();
     super.initState();
   }
@@ -31,6 +36,7 @@ class _AqiLoadedState extends State<AqiLoaded>
   void loadClouds() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Durations.short1, () {
+        if (!mounted) return;
         controller.forward(from: 0.5);
         controller.addStatusListener((status) {
           if (status.isCompleted) controller.repeat();
@@ -61,7 +67,11 @@ class _AqiLoadedState extends State<AqiLoaded>
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 80,
-          children: [SizedBox(), AqiMeter(), AqiPollutantsBuilder()],
+          children: [
+            SizedBox(),
+            AqiMeter(aqiEntity: widget.aqiEntity),
+            AqiPollutantsBuilder(aqiEntity: widget.aqiEntity),
+          ],
         ),
       ],
     );

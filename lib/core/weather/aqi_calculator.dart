@@ -71,4 +71,8 @@ class AqiCalculator {
         return Color(0xFF9F86C0);
     }
   }
+
+  String formatPollutantName(String pollutant){
+      return pollutant.replaceAll("_", ".").toUpperCase();
+  }
 }

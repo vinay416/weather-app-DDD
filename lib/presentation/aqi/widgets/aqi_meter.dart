@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/presentation/aqi/widgets/aqi_meter_painter.dart';
 import 'package:weather_app_ddd/theme/app_theme.dart';
 
 import '../../../core/weather/aqi_calculator.dart';
 
 class AqiMeter extends StatelessWidget {
-  const AqiMeter({super.key});
+  const AqiMeter({super.key, required this.aqiEntity});
+  final AqiEntity aqiEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class AqiMeter extends StatelessWidget {
 
   Widget _buildStatus() {
     final aqiCal = AqiCalculator();
-    final aqiIndex = 2;
+    final aqiIndex = aqiEntity.index;
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       spacing: 5,
@@ -27,12 +29,12 @@ class AqiMeter extends StatelessWidget {
         Transform.translate(
           offset: Offset(0, 150),
           child: Text(
-            "124",
+            aqiEntity.aqiValue,
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.w400),
           ),
         ),
         Text(
-          aqiCal.aqiStatus(aqiIndex),
+          aqiEntity.status,
           style: TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.bold,
@@ -41,7 +43,7 @@ class AqiMeter extends StatelessWidget {
         ),
         RichText(
           text: TextSpan(
-            text: "12.0",
+            text: aqiEntity.pm2_5.toString(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             children: [
               TextSpan(text: " "),

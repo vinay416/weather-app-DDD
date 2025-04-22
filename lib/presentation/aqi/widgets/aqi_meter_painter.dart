@@ -9,21 +9,6 @@ class AqiMeterPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     List<Color> sectorColors = kAQIMeterColors;
 
-    // List<Color> sectorColors = [
-    //   Color(0xFFA2D79B),
-    //   Color(0xFF85cb9d),
-    //   Color(0xFF85cb9d),
-    //   Color(0xFFABDC9E),
-    //   Color(0xFFfadbaa),
-    //   Color(0xFFf2d272),
-    //   Color(0xFFf6c99d),
-    //   Color(0xFFf2c97d),
-    //   Color(0xFFedc044),
-    //   Color(0xFFed9c47),
-    //   Color(0xFFea6523),
-    //   Color(0xFFd15212),
-    // ];
-
     final double mainCircleDiameter = size.width;
 
     final arcsRect = Rect.fromLTWH(

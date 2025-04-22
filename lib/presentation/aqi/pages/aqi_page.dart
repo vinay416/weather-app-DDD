@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_ddd/application/weather/aqi/aqi_bloc.dart';
+import 'package:weather_app_ddd/presentation/aqi/pages/aqi_failed_state.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_loaded.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_permission_error.dart';
 import 'package:weather_app_ddd/presentation/aqi/pages/aqi_shimmer.dart';
@@ -17,7 +18,7 @@ class _AqiPageState extends State<AqiPage> {
   @override
   void initState() {
     super.initState();
-    // context.read<AQIBloc>().add(FetchAQI());
+    context.read<AQIBloc>().add(FetchAQI());
   }
 
   @override
@@ -25,16 +26,20 @@ class _AqiPageState extends State<AqiPage> {
     return Scaffold(
       body: BlocBuilder<AQIBloc, AQIState>(
         builder: (context, state) {
-          return AqiPermissionError();
-          return AqiShimmer();
           if (state is AQILoading) {
-            // shimmer
+            return AqiShimmer();
           }
-          if (state is LocationPermissionError) {}
-          if (state is LocationServiceError) {}
-          if (state is AQIData) {}
+          if (state is LocationPermissionError) {
+            return AqiPermissionError(msg: state.msg);
+          }
+          if (state is LocationServiceError) {
+            return AqiPermissionError(msg: state.msg);
+          }
+          if (state is AQIData) {
+            return AqiLoaded(aqiEntity: state.aqiEntity);
+          }
           //AQIFailed
-          return AqiLoaded();
+          return AqiFailedState();
         },
       ),
     );

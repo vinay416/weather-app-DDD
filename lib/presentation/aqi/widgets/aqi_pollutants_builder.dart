@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app_ddd/core/assets_const.dart';
+import 'package:weather_app_ddd/core/weather/aqi_calculator.dart';
+import 'package:weather_app_ddd/domain/weather/aqi_entity.dart';
 import 'package:weather_app_ddd/theme/app_theme.dart';
 
 import '../../../application/weather/aqi/aqi_bloc.dart';
 import '../utils/aqi_colors_const.dart';
 
 class AqiPollutantsBuilder extends StatelessWidget {
-  const AqiPollutantsBuilder({super.key});
+  const AqiPollutantsBuilder({super.key, required this.aqiEntity});
+  final AqiEntity aqiEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -52,29 +55,30 @@ class AqiPollutantsBuilder extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         final color = kAQIPolluntantsColors[index];
-        return _buildPollutant(color, context);
+        final pollutant = aqiEntity.components.keys.toList()[index];
+        return _buildPollutant(color, context, pollutant);
       },
       separatorBuilder: (context, index) => SizedBox(height: 5),
-      itemCount: 8,
+      itemCount: aqiEntity.components.length,
     );
   }
 
-  Widget _buildPollutant(Color color, BuildContext context) {
+  Widget _buildPollutant(Color color, BuildContext context, String pollutant) {
     return Material(
       color: color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
-          context.read<AQIBloc>().add(ShowPollutantInfo("co"));
+          context.read<AQIBloc>().add(ShowPollutantInfo(pollutant));
         },
         borderRadius: BorderRadius.circular(12),
         highlightColor: kSplashColor,
-        child: Stack(children: [_buildCloudBG(), _buildDetails()]),
+        child: Stack(children: [_buildCloudBG(), _buildDetails(pollutant)]),
       ),
     );
   }
 
-  Container _buildDetails() {
+  Container _buildDetails(String pollutant) {
     return Container(
       width: double.infinity,
       height: 80,
@@ -83,7 +87,7 @@ class AqiPollutantsBuilder extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "CO",
+            AqiCalculator().formatPollutantName(pollutant),
             style: TextStyle(
               color: kPrimaryColor,
               fontSize: 30,
@@ -93,7 +97,7 @@ class AqiPollutantsBuilder extends StatelessWidget {
           Row(
             spacing: 10,
             children: [
-              _buildUgM3Value(),
+              _buildUgM3Value(aqiEntity.components[pollutant] ?? 0.0),
               Icon(Icons.info_outline, color: kPrimaryColor),
             ],
           ),
@@ -120,10 +124,10 @@ class AqiPollutantsBuilder extends StatelessWidget {
     );
   }
 
-  Widget _buildUgM3Value() {
+  Widget _buildUgM3Value(num value) {
     return RichText(
       text: TextSpan(
-        text: "12.0",
+        text: value.toString(),
         style: TextStyle(
           fontSize: 25,
           fontWeight: FontWeight.bold,
